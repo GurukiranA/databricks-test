@@ -25,5 +25,9 @@ df.select(max("Adj Close"), max ("Volume"))\
     .show(truncate=False)
 
 # COMMAND ----------
-
+df.Select("Date","Adj Close","Volume")\
+  .where(df.Volume > 150000000)\
+  .write.option("header","true")\
+        .mode('overwrite')\
+        .mode('dbfs:/Filestore/outputs/tesla_highvoldays'.csv)
 
